@@ -2,6 +2,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import "style/sidebar";
 @import "style/content";
+@import '../ng-select/themes/material.theme.scss';
+
 
 body {
     position: relative;

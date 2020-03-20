@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgDropdownPanelComponent } from './ng-dropdown-panel.component';
 import { NgOptionComponent } from './ng-option.component';
 import { NgSelectComponent, SELECTION_MODEL_FACTORY } from './ng-select.component';
+import { BrowserModule } from '@angular/platform-browser';
 import {
     NgFooterTemplateDirective,
     NgHeaderTemplateDirective,
@@ -38,7 +39,7 @@ import { DefaultSelectionModelFactory } from './selection-model';
         NgItemLabelDirective
     ],
     imports: [
-        CommonModule
+        CommonModule, BrowserModule
     ],
     exports: [
         NgSelectComponent,
@@ -59,4 +60,4 @@ import { DefaultSelectionModelFactory } from './selection-model';
         { provide: SELECTION_MODEL_FACTORY, useValue: DefaultSelectionModelFactory }
     ]
 })
-export class NgSelectModule {}
+export class NgSelectModule { }

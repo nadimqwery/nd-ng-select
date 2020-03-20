@@ -1,10 +1,9 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
-// @ts-ignore
-import * as antDesignTheme from '../../../ng-select/themes/ant.design.theme.scss';
-// @ts-ignore
-import * as defaultTheme from '../../../ng-select/themes/default.theme.scss';
-// @ts-ignore
-import * as materialTheme from '../../../ng-select/themes/material.theme.scss';
+
+
+const antDesignTheme = require('../../../ng-select/themes/ant.design.theme.scss');
+const defaultTheme = require('../../../ng-select/themes/default.theme.scss');
+const materialTheme = require('../../../ng-select/themes/material.theme.scss');
 
 type langDir = 'ltr' | 'rtl';
 
@@ -27,7 +26,7 @@ type langDir = 'ltr' | 'rtl';
             </button>
 
             <div class="collapse navbar-collapse">
-                <div ngbDropdown class="d-inline-block">
+                <!-- <div ngbDropdown class="d-inline-block">
                     <button class="btn btn-outline-secondary btn-sm" style="width: 150px;"
                             ngbDropdownToggle>{{theme}}</button>
                     <div ngbDropdownMenu>
@@ -37,7 +36,7 @@ type langDir = 'ltr' | 'rtl';
                         <button (click)="setTheme('Ant Design theme')" class="dropdown-item btn-sm">Ant Design theme
                         </button>
                     </div>
-                </div>
+                </div> -->
 
                 <div ngbDropdown class="d-inline-block ml-2">
                     <button class="btn btn-outline-secondary btn-sm text-uppercase" style="width: 60px;"
@@ -83,12 +82,16 @@ export class LayoutHeaderComponent implements AfterViewInit {
     setTheme(theme) {
         this.theme = theme;
         if (this.theme === 'Default theme') {
-            this.style.innerHTML = defaultTheme;
+            this.style.innerHTML = this.getCSSContent();
         } else if (this.theme === 'Material theme') {
-            this.style.innerHTML = materialTheme;
+            this.style.innerHTML = this.getCSSContent();
         } else {
-            this.style.innerHTML = antDesignTheme;
+            this.style.innerHTML = this.getCSSContent();
         }
+    }
+
+    getCSSContent() {
+        return materialTheme;
     }
 
     changeDirTo(dir: langDir) {
